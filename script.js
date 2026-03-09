@@ -13,6 +13,11 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 const storage = firebase.storage();
 
+// Mobile detection
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+}
+
 let topZ = 100;
 let openApps = new Set();
 let activeChat = null;
@@ -391,6 +396,9 @@ function updatePassword() {
 function bringToFront(el) { topZ += 1; el.style.zIndex = topZ; }
 
 function dragWindow(handleOrElmnt) {
+  // Disable dragging on mobile
+  if (isMobileDevice()) return;
+  
   let handle = handleOrElmnt;
   let target = null;
   if (handleOrElmnt?.classList?.contains("app-icon")) target = handleOrElmnt;
@@ -426,6 +434,9 @@ function dragWindow(handleOrElmnt) {
 }
 
 function makeResizable(win) {
+  // Disable resizing on mobile
+  if (isMobileDevice()) return;
+  
   if (win._resizableInitialized) return;
   win._resizableInitialized = true;
   const handle = win.querySelector(".resize-handle");
@@ -458,6 +469,15 @@ function openApp(id) {
   openApps.add(id);
   bringToFront(win);
   makeResizable(win);
+  
+  // On mobile, ensure window is properly positioned
+  if (isMobileDevice()) {
+    win.style.top = "0";
+    win.style.left = "0";
+    win.style.width = "100%";
+    win.style.height = "calc(100vh - 50px)";
+  }
+  
   updateTaskbar();
   updateTaskManager();
 
@@ -4013,3 +4033,29 @@ document.addEventListener('click', (e) => {
     panel.style.display = "none";
   }
 });
+
+// Mobile: Convert double-click to single-click for app icons
+if (isMobileDevice()) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const appIcons = document.querySelectorAll('.app-icon');
+    appIcons.forEach(icon => {
+      // Remove double-click handler on mobile
+      icon.ondblclick = null;
+      
+      // Add single-click handler
+      icon.addEventListener('click', (e) => {
+        e.preventDefault();
+        const iconElement = e.currentTarget;
+        
+        // Extract app id from ondblclick attribute if it exists
+        const ondbclick = iconElement.getAttribute('ondblclick');
+        if (ondbclick) {
+          const match = ondbclick.match(/openApp\('([^']+)'\)/);
+          if (match && match[1]) {
+            openApp(match[1]);
+          }
+        }
+      });
+    });
+  });
+}
