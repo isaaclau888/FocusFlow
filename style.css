@@ -502,3 +502,471 @@ iframe { width: 100%; height: 100%; border: none; }
   .stocks-grid { grid-template-columns: 1fr; }
   .stocks-topbar { grid-template-columns: 1fr; }
 }
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Desktop Icons - Mobile Layout */
+  #desktop .app-icon {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 70px !important;
+    height: 70px !important;
+    margin: 0 !important;
+    font-size: 10px !important;
+  }
+  
+  #desktop {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 15px;
+    overflow-y: auto;
+    padding-bottom: 70px;
+  }
+  
+  .app-icon img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  
+  .app-emoji {
+    font-size: 32px !important;
+  }
+  
+  /* Windows - Full Screen on Mobile */
+  .window {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100vh - 50px) !important;
+    max-width: 100% !important;
+    max-height: calc(100vh - 50px) !important;
+    border-radius: 0 !important;
+    transform: none !important;
+  }
+  
+  .window.minimized {
+    display: none !important;
+  }
+  
+  .window-header {
+    cursor: default !important;
+    padding: 10px 12px !important;
+    touch-action: none;
+  }
+  
+  .win-title {
+    font-size: 14px !important;
+  }
+  
+  .ctrl-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 18px !important;
+  }
+  
+  .resize-handle {
+    display: none !important;
+  }
+  
+  /* Taskbar Mobile */
+  #taskbar {
+    height: 50px !important;
+    padding: 0 10px !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  
+  .taskbar-left, .taskbar-right {
+    gap: 8px !important;
+    font-size: 12px !important;
+  }
+  
+  .logo {
+    font-size: 14px !important;
+  }
+  
+  .active-app-btn {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    white-space: nowrap;
+  }
+  
+  .taskbar-divider {
+    display: none !important;
+  }
+  
+  #clock {
+    font-size: 11px !important;
+  }
+  
+  .shutdown-btn {
+    font-size: 16px !important;
+  }
+  
+  /* Notification Panel Mobile */
+  .notification-panel {
+    width: calc(100vw - 20px) !important;
+    max-width: 360px !important;
+    right: 10px !important;
+    bottom: 60px !important;
+  }
+  
+  /* Login Screen Mobile */
+  .login-card {
+    width: 90% !important;
+    max-width: 340px !important;
+    padding: 30px 20px !important;
+  }
+  
+  /* Settings Mobile */
+  .settings-view {
+    padding: 15px !important;
+  }
+  
+  .wallpaper-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .notification-settings {
+    padding: 0 !important;
+  }
+  
+  .notif-type-item {
+    padding: 10px 12px !important;
+  }
+  
+  .notif-icon {
+    font-size: 20px !important;
+  }
+  
+  .notif-title {
+    font-size: 12px !important;
+  }
+  
+  .notif-desc {
+    font-size: 10px !important;
+  }
+  
+  /* Calendar Mobile */
+  .calendar-grid {
+    font-size: 12px !important;
+  }
+  
+  .calendar-day {
+    padding: 6px 4px !important;
+    font-size: 11px !important;
+  }
+  
+  .event-modal-content {
+    width: calc(100vw - 30px) !important;
+    max-width: 100% !important;
+    padding: 15px !important;
+  }
+  
+  .event-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .schedule-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  
+  /* Todo Mobile */
+  .todo-layout {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .todo-modal-content {
+    width: calc(100vw - 30px) !important;
+    padding: 15px !important;
+  }
+  
+  .todo-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .todo-item {
+    padding: 10px !important;
+  }
+  
+  /* Timer Mobile */
+  .timer-circle {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  
+  .focus-time {
+    font-size: 40px !important;
+  }
+  
+  .timer-presets {
+    gap: 4px !important;
+  }
+  
+  .timer-presets button {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Exams Mobile */
+  .exam-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .exam-item {
+    padding: 10px !important;
+  }
+  
+  .exam-item-main {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  
+  .exam-next-countdown {
+    font-size: 14px !important;
+  }
+  
+  /* Flashcards Mobile */
+  .flashcards-window {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .flashcards-layout {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+  
+  .flashcards-left {
+    order: 2;
+  }
+  
+  .flashcards-right {
+    order: 1;
+    min-height: 400px;
+  }
+  
+  .flash-deck-header {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  
+  .flash-deck-header input {
+    font-size: 16px !important;
+    text-align: center;
+  }
+  
+  .flashcard-card {
+    min-height: 220px !important;
+  }
+  
+  .flashcard-content {
+    font-size: 22px !important;
+  }
+  
+  .flash-mode-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .flash-mode-tabs .btn-save {
+    flex: 1;
+    min-width: 80px;
+    font-size: 11px !important;
+  }
+  
+  /* Music Mobile */
+  .music-window {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .music-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .music-controls input[type="range"] {
+    width: 140px !important;
+  }
+  
+  /* Stocks Mobile */
+  .stocks-window {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .stocks-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .stocks-topbar {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .stocks-table {
+    font-size: 11px !important;
+  }
+  
+  .stocks-table th,
+  .stocks-table td {
+    padding: 6px 4px !important;
+  }
+  
+  .stocks-table input {
+    width: 60px !important;
+    font-size: 11px !important;
+  }
+  
+  /* Social Hub Mobile */
+  .social-layout {
+    flex-direction: column !important;
+  }
+  
+  .friends-panel,
+  .chat-panel {
+    width: 100% !important;
+    min-height: 200px;
+  }
+  
+  /* Progress Mobile */
+  .progress-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .progress-badge-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Notes Mobile */
+  .notes-view textarea {
+    font-size: 14px !important;
+  }
+  
+  /* Browser Mobile */
+  .browser-controls {
+    flex-wrap: wrap;
+  }
+  
+  .browser-controls input {
+    min-width: 150px !important;
+  }
+  
+  /* Task Manager Mobile */
+  .taskmgr-view table {
+    font-size: 11px !important;
+  }
+  
+  .taskmgr-view th,
+  .taskmgr-view td {
+    padding: 6px 4px !important;
+  }
+  
+  /* Weather Mobile */
+  .weather-search {
+    flex-direction: column;
+  }
+  
+  .weather-search input {
+    width: 100% !important;
+  }
+  
+  /* Touch-Friendly Buttons */
+  button,
+  .btn-main,
+  .btn-save,
+  .btn-logout,
+  .kill-btn {
+    min-height: 42px !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    touch-action: manipulation;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  textarea,
+  select {
+    min-height: 42px !important;
+    font-size: 16px !important;
+    padding: 10px 12px !important;
+    touch-action: manipulation;
+  }
+  
+  input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    cursor: pointer;
+  }
+  
+  /* Scrollbar Mobile */
+  ::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+  }
+  
+  /* Prevent zoom on input focus */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Extra Small Devices (phones in portrait) */
+@media (max-width: 480px) {
+  #desktop {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .app-icon {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 9px !important;
+  }
+  
+  .app-icon img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  
+  .app-emoji {
+    font-size: 28px !important;
+  }
+  
+  #taskbar {
+    height: 45px !important;
+  }
+  
+  .window {
+    height: calc(100vh - 45px) !important;
+  }
+  
+  .logo {
+    display: none !important;
+  }
+  
+  #user-display-name {
+    display: none !important;
+  }
+  
+  .flashcard-content {
+    font-size: 18px !important;
+  }
+  
+  .progress-stats {
+    grid-template-columns: 1fr !important;
+  }
+}
