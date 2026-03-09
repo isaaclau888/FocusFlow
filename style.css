@@ -610,11 +610,46 @@ iframe { width: 100%; height: 100%; border: none; }
   }
   
   /* Notification Panel Mobile */
+  #notification-icon {
+    display: block !important;
+    font-size: 20px !important;
+  }
+  
+  #notif-divider {
+    display: block !important;
+  }
+  
   .notification-panel {
     width: calc(100vw - 20px) !important;
-    max-width: 360px !important;
+    max-width: 100% !important;
+    max-height: calc(100vh - 100px) !important;
     right: 10px !important;
-    bottom: 60px !important;
+    bottom: 55px !important;
+    left: auto !important;
+    border-radius: 12px !important;
+    padding: 14px !important;
+    font-size: 13px !important;
+  }
+  
+  .notification-list {
+    max-height: calc(100vh - 150px) !important;
+  }
+  
+  .notification-item {
+    padding: 12px !important;
+    margin-bottom: 6px !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    cursor: pointer;
+  }
+  
+  .notif-title {
+    font-size: 13px !important;
+  }
+  
+  .notification-panel button {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
   }
   
   /* Login Screen Mobile */
@@ -968,5 +1003,33 @@ iframe { width: 100%; height: 100%; border: none; }
   
   .progress-stats {
     grid-template-columns: 1fr !important;
+  }
+  
+  /* Notifications on Extra Small Phones */
+  #notification-icon {
+    font-size: 18px !important;
+  }
+  
+  .notification-panel {
+    width: calc(100vw - 10px) !important;
+    max-height: 50vh !important;
+    right: 5px !important;
+    bottom: 48px !important;
+  }
+  
+  .notification-item {
+    padding: 10px !important;
+  }
+  
+  .notif-icon {
+    font-size: 18px !important;
+  }
+  
+  .notif-title {
+    font-size: 12px !important;
+  }
+  
+  .notif-desc {
+    font-size: 10px !important;
   }
 }
