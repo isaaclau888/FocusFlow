@@ -1,0 +1,11 @@
+/* --- Music App --- */
+.music-window { width: 620px; height: 520px; }
+.music-view { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.music-now-playing { border: 1px solid #e6ecf5; border-radius: 10px; background: linear-gradient(135deg, #f7fbff, #eff6ff); padding: 12px; }
+.music-track-title { font-size: 22px; font-weight: 700; color: #123b63; }
+.music-track-meta { margin-top: 4px; font-size: 12px; color: #667085; }
+.music-controls { display: flex; gap: 8px; align-items: center; }
+.music-controls input[type="range"] { width: 180px; }
+.music-playlist { border: 1px solid #e6ecf5; border-radius: 10px; background: #fff; overflow: auto; display: flex; flex-direction: column; gap: 6px; padding: 8px; }
+.music-track-row { border: 1px solid #edf2fa; border-radius: 8px; padding: 8px; cursor: pointer; }
+.music-track-row.active { border-color: #6aa5ff; background: #f2f8ff; }

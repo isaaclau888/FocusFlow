@@ -1,0 +1,7 @@
+/* --- Admin Panel --- */
+.admin-view { padding: 12px; display: grid; grid-template-columns: 1fr 340px; gap: 12px; }
+.admin-left, .admin-right { border: 1px solid #e8e8e8; border-radius: 10px; padding: 10px; background: #fff; }
+.admin-users-table { width: 100%; border-collapse: collapse; }
+.admin-users-table th, .admin-users-table td { border-bottom: 1px solid #eee; padding: 8px; text-align: left; font-size: 13px; }
+.admin-form-grid { display: grid; grid-template-columns: 110px 1fr; gap: 6px; align-items: center; margin-bottom: 8px; }
+.admin-right textarea { width: 100%; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; padding: 8px; }

@@ -1,0 +1,9 @@
+/* --- WEATHER VIEW --- */
+.weather-view { padding: 20px; text-align: center; background: linear-gradient(to bottom, #e0f2fe, #ffffff); }
+.weather-search { display: flex; gap: 8px; margin-bottom: 15px; align-items: center; justify-content: center; }
+.weather-search input { width: 180px; margin-bottom: 0; padding: 8px; }
+.weather-info-card { background: rgba(255,255,255,0.6); border-radius: 12px; padding: 20px; border: 1px solid rgba(0,0,0,0.05); }
+.forecast-item { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
+.forecast-day { font-size: 11px; font-weight: bold; color: #555; text-transform: uppercase; }
+.forecast-img { width: 32px; height: 32px; }
+.forecast-temp { font-size: 12px; font-weight: bold; color: #333; }

@@ -1,0 +1,21 @@
+/* --- Stock App --- */
+.stocks-window { width: 940px; height: 560px; }
+.stocks-view { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.stocks-topbar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stocks-topbar > div { border: 1px solid #e7edf7; border-radius: 10px; background: #fff; padding: 10px; }
+.stocks-label { font-size: 11px; text-transform: uppercase; color: #667085; margin-right: 6px; }
+.stocks-grid { display: grid; grid-template-columns: 1fr 290px; gap: 10px; min-height: 0; flex: 1; }
+.stocks-market-panel, .stocks-side-panel { border: 1px solid #e7edf7; border-radius: 10px; background: #fff; padding: 10px; overflow: auto; }
+.stocks-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.stocks-table th, .stocks-table td { border-bottom: 1px solid #eef3fb; padding: 8px; text-align: left; }
+.stocks-table input { margin: 0; padding: 5px; border: 1px solid #d7deea; border-radius: 6px; }
+.stocks-portfolio, .stocks-history { display: flex; flex-direction: column; gap: 6px; }
+.stock-holding-row, .stock-trade-row { display: flex; justify-content: space-between; border: 1px solid #edf2fa; border-radius: 8px; padding: 6px 8px; font-size: 12px; }
+.stock-chart-wrap { border: 1px solid #e7edf7; border-radius: 10px; overflow: hidden; background: #fff; }
+#stock-chart-svg { width: 100%; height: 140px; display: block; }
+.stock-chart-stats { margin-top: 6px; display: flex; justify-content: space-between; font-size: 11px; color: #667085; }
+
+@media (max-width: 1000px) {
+  .stocks-grid { grid-template-columns: 1fr; }
+  .stocks-topbar { grid-template-columns: 1fr; }
+}

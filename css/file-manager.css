@@ -1,0 +1,90 @@
+/* File Manager */
+
+.filemgr-view {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.filemgr-toolbar {
+  display: flex;
+  gap: 8px;
+}
+
+.filemgr-toolbar input {
+  flex: 1;
+}
+
+.filemgr-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+.filemgr-list-panel,
+.filemgr-editor-panel {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 8px;
+  min-height: 0;
+}
+
+#fm-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.fm-file-row {
+  text-align: left;
+  border: 1px solid #dbe2ef;
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 7px 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.fm-file-row.active {
+  background: #eaf3ff;
+  border-color: #8bb7ff;
+}
+
+.fm-empty {
+  color: #6b7280;
+  font-size: 12px;
+  padding: 8px;
+}
+
+.fm-current-file {
+  font-size: 12px;
+  color: #4b5563;
+  margin-bottom: 6px;
+}
+
+#fm-editor {
+  width: 100%;
+  min-height: 220px;
+  height: calc(100% - 56px);
+  resize: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+}
+
+.filemgr-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .filemgr-layout {
+    grid-template-columns: 1fr;
+  }
+}

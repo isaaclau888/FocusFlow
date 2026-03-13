@@ -1,0 +1,42 @@
+/* --- SOCIAL VIEW STYLES --- */
+.social-layout{
+display:flex;
+height:100%;
+}
+
+.friends-panel{
+width:200px;
+border-right:1px solid #ddd;
+padding:10px;
+overflow:auto;
+}
+
+.chat-panel{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+#chat-messages{
+flex:1;
+overflow:auto;
+padding:10px;
+}
+
+.message{
+margin-bottom:8px;
+padding:6px;
+border-radius:6px;
+background:#eee;
+}
+
+.message.own{
+background:#cfe8ff;
+}
+
+.chat-input{
+display:flex;
+gap:5px;
+padding:10px;
+border-top:1px solid #ddd;
+}

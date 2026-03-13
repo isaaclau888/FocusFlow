@@ -1,0 +1,22 @@
+/* --- Exam/Test Planner --- */
+.exam-window { width: 780px; height: 560px; }
+.exam-view { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+.exam-topbar { display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; border: 1px solid #ebeff5; border-radius: 10px; padding: 10px 12px; }
+.exam-next-countdown { font-size: 20px; font-weight: 700; color: #0f4c81; }
+.exam-form-grid { display: grid; grid-template-columns: 1.4fr 0.8fr 1fr 1fr 0.8fr 1fr; gap: 8px; }
+.exam-form-grid input, .exam-form-grid select { margin: 0; padding: 8px; border: 1px solid #d7deea; border-radius: 8px; font-size: 13px; }
+.exam-list { display: flex; flex-direction: column; gap: 8px; overflow: auto; padding-right: 4px; }
+.exam-item { border: 1px solid #e5ebf5; border-left: 4px solid #3f8cff; border-radius: 10px; padding: 10px; background: #fff; }
+.exam-item.completed { opacity: 0.65; border-left-color: #8a8a8a; }
+.exam-item-main { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.exam-title-row { display: flex; gap: 8px; align-items: center; }
+.exam-type-pill { font-size: 10px; text-transform: uppercase; font-weight: 700; color: #0f4c81; background: #e6f2ff; border: 1px solid #cfe3ff; border-radius: 999px; padding: 2px 8px; }
+.exam-meta { margin-top: 4px; font-size: 12px; color: #667085; }
+.exam-countdown { font-family: "Courier New", monospace; font-size: 16px; font-weight: 700; color: #0a58ca; }
+.exam-actions { margin-top: 8px; display: flex; gap: 8px; justify-content: flex-end; }
+
+@media (max-width: 900px) {
+  .exam-form-grid { grid-template-columns: 1fr 1fr; }
+  .exam-next-countdown { font-size: 16px; }
+  .exam-item-main { flex-direction: column; align-items: flex-start; }
+}

@@ -1,0 +1,189 @@
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Desktop Icons - Mobile Layout (draggable) */
+  #desktop .app-icon {
+    position: absolute !important;
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 10px !important;
+  }
+  
+  #desktop {
+    display: block !important;
+    position: relative !important;
+    overflow: auto;
+  }
+  
+  .app-icon img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  
+  .app-emoji {
+    font-size: 32px !important;
+  }
+  
+  /* Windows - Draggable on Mobile */
+  .window {
+    position: absolute !important;
+    top: 14px !important;
+    left: 8px !important;
+    width: calc(100vw - 16px) !important;
+    height: calc(100vh - 92px) !important;
+    max-width: calc(100vw - 16px) !important;
+    max-height: calc(100vh - 92px) !important;
+    border-radius: 10px !important;
+    transform: none !important;
+  }
+  
+  .window.minimized {
+    display: none !important;
+  }
+  
+  .window-header {
+    cursor: move !important;
+    padding: 10px 12px !important;
+    touch-action: none;
+  }
+  
+  .win-title {
+    font-size: 14px !important;
+  }
+  
+  .ctrl-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 18px !important;
+  }
+  
+  .resize-handle {
+    display: none !important;
+  }
+  
+  /* Taskbar Mobile */
+  #taskbar {
+    height: 50px !important;
+    padding: 0 10px !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  
+  .taskbar-left, .taskbar-right {
+    gap: 8px !important;
+    font-size: 12px !important;
+  }
+  
+  .logo {
+    font-size: 14px !important;
+  }
+  
+  .active-app-btn {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    white-space: nowrap;
+  }
+  
+  .taskbar-divider {
+    display: none !important;
+  }
+  
+  #clock {
+    font-size: 11px !important;
+  }
+  
+  .shutdown-btn {
+    font-size: 16px !important;
+  }
+  
+  /* Notification Panel Mobile */
+  #notification-icon {
+    display: block !important;
+    font-size: 20px !important;
+  }
+  
+  #notif-divider {
+    display: block !important;
+  }
+  
+  .notification-panel {
+    width: calc(100vw - 20px) !important;
+    max-width: 100% !important;
+    max-height: calc(100vh - 100px) !important;
+    right: 10px !important;
+    bottom: 55px !important;
+    left: auto !important;
+    border-radius: 12px !important;
+    padding: 14px !important;
+    font-size: 13px !important;
+  }
+  
+  .notification-list {
+    max-height: calc(100vh - 150px) !important;
+  }
+  
+  .notification-item {
+    padding: 12px !important;
+    margin-bottom: 6px !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    cursor: pointer;
+  }
+  
+  .notif-title {
+    font-size: 13px !important;
+  }
+  
+  .notification-panel button {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Login Screen Mobile */
+  .login-card {
+    width: 90% !important;
+    max-width: 340px !important;
+    padding: 30px 20px !important;
+  }
+  
+  /* Settings Mobile */
+  .settings-view {
+    padding: 15px !important;
+  }
+  
+  .wallpaper-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .notification-settings {
+    padding: 0 !important;
+  }
+  
+  .notif-type-item {
+    padding: 10px 12px !important;
+  }
+  
+  .notif-icon {
+    font-size: 20px !important;
+  }
+  
+  .notif-title {
+    font-size: 12px !important;
+  }
+  
+  .notif-desc {
+    font-size: 10px !important;
+  }
+  
+  /* Calendar Mobile */
+  .calendar-grid {
+    font-size: 12px !important;
+  }
+  
+  .calendar-day {
+    padding: 6px 4px !important;
+    font-size: 11px !important;
+  }
+}
