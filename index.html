@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>FocusFlow OS</title>
+    
+    <!-- CSS Modules -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/weather.css">
+    <link rel="stylesheet" href="css/social.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/timer.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/progress.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/todo.css">
+    <link rel="stylesheet" href="css/exams.css">
+    <link rel="stylesheet" href="css/flashcards.css">
+    <link rel="stylesheet" href="css/music.css">
+    <link rel="stylesheet" href="css/stocks.css">
+    <link rel="stylesheet" href="css/file-manager.css">
+    <link rel="stylesheet" href="css/terminal.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+
+    <div id="loading-screen">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <h1 class="loading-text">FocusFlow</h1>
+            <p class="sub-text">Initalizing Kernel...</p>
+        </div>
+    </div>
+
+    <div id="shutdown-screen" style="display:none;">
+        <div class="shutdown-content">
+            <div class="shutdown-spinner"></div>
+            <h1 class="shutdown-title">Shutting Down</h1>
+            <p class="shutdown-subtitle">Saving your session...</p>
+        </div>
+    </div>
+
+    <div class="wallpaper"></div>
+
+    <div id="login-screen" style="display:none;">
+        <div class="login-card">
+            <div class="profile-img" id="user-photo"></div>
+            <h2 id="auth-title">Welcome</h2>
+            <div class="auth-box">
+                <input type="email" id="email" placeholder="Email">
+                <input type="password" id="password" placeholder="Password">
+                
+                <div id="login-actions">
+                    <button class="btn-main" onclick="emailLogin()">Sign In</button>
+                    <p class="auth-link" onclick="forgotPassword()">Forgot Password?</p>
+                    <p class="auth-toggle">New user? <span onclick="toggleAuthMode(true)">Register</span></p>
+                </div>
+
+                <div id="register-actions" style="display:none;">
+                    <button class="btn-main" style="background:#27c93f;" onclick="emailRegister()">Create Account</button>
+                    <p class="auth-toggle">Have an account? <span onclick="toggleAuthMode(false)">Sign In</span></p>
+                </div>
+
+                <div class="or-separator">or</div>
+                <button class="btn-google" onclick="googleLogin()">
+                    <img src="https://img.icons8.com/color/20/google-logo.png"> 
+                    <span>Continue with Google</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="os-interface" style="display:none;">
+        
+        <div id="desktop">
+            <div class="app-icon" style="top:30px; left:30px;" onmousedown="dragWindow(this)" ondblclick="openApp('notes')">
+                <div class="app-emoji">📝</div>
+                <span>Notes</span>
+            </div>
+            <div class="app-icon" style="top:130px; left:30px;" onmousedown="dragWindow(this)" ondblclick="openApp('browser')">
+                <div class="app-emoji">🌐</div>
+                <span>Browser</span>
+            </div>
+            <div class="app-icon" style="top:230px; left:30px;" onmousedown="dragWindow(this)" ondblclick="openApp('settings')">
+                <div class="app-emoji">⚙️</div>
+                <span>Settings</span>
+            </div>
+            <div class="app-icon" style="top:330px; left:30px;" onmousedown="dragWindow(this)" ondblclick="openApp('taskmgr')">
+                <div class="app-emoji">📊</div>
+                <span>Task Manager</span>
+            </div>
+            <div class="app-icon" style="top:430px; left:30px;" onmousedown="dragWindow(this)" ondblclick="openApp('weather')">
+                <div class="app-emoji">🌤️</div>
+                <span>Weather</span>
+            </div>
+            <div class="app-icon" style="top:530px; left:30px;" onmousedown="dragWindow(this)" ondblclick="openApp('social')">
+                <div class="app-emoji">👥</div>
+                <span>Social Hub</span>
+            </div>
+            <div class="app-icon" style="top:30px; left:130px;" onmousedown="dragWindow(this)" ondblclick="openApp('focus')">
+                <div class="app-emoji">⏱️</div>
+                <span>Focus Timer</span>
+            </div>
+            <div class="app-icon" style="top:130px; left:130px;" onmousedown="dragWindow(this)" ondblclick="openApp('calendar')">
+                <div class="app-emoji">📅</div>
+                <span>Calendar</span>
+            </div>
+            <div class="app-icon" style="top:230px; left:130px;" onmousedown="dragWindow(this)" ondblclick="openApp('progress')">
+                <div class="app-emoji">📈</div>
+                <span>Progress</span>
+            </div>
+            <div class="app-icon" style="top:330px; left:130px;" onmousedown="dragWindow(this)" ondblclick="openApp('leaderboard')">
+                <div class="app-emoji">🏆</div>
+                <span>Leaderboard</span>
+            </div>
+            <div class="app-icon" style="top:430px; left:130px;" onmousedown="dragWindow(this)" ondblclick="openApp('todolist')">
+                <div class="app-emoji">✓</div>
+                <span>To-Do</span>
+            </div>
+            <div class="app-icon" style="top:530px; left:130px;" onmousedown="dragWindow(this)" ondblclick="openApp('exams')">
+                <div class="app-emoji">🧪</div>
+                <span>Exams</span>
+            </div>
+            <div class="app-icon" style="top:30px; left:230px;" onmousedown="dragWindow(this)" ondblclick="openApp('music')">
+                <div class="app-emoji">🎵</div>
+                <span>Music</span>
+            </div>
+            <div class="app-icon" style="top:130px; left:230px;" onmousedown="dragWindow(this)" ondblclick="openApp('stocks')">
+                <div class="app-emoji">💹</div>
+                <span>Stocks</span>
+            </div>
+            <div class="app-icon" style="top:230px; left:230px;" onmousedown="dragWindow(this)" ondblclick="openApp('filemgr')">
+                <div class="app-emoji">📁</div>
+                <span>Files</span>
+            </div>
+            <div class="app-icon" style="top:330px; left:230px;" onmousedown="dragWindow(this)" ondblclick="openApp('terminal')">
+                <div class="app-emoji">⌨️</div>
+                <span>Terminal</span>
+            </div>
+            <div class="app-icon" style="top:530px; left:230px;" onmousedown="dragWindow(this)" ondblclick="openApp('flashcards')">
+                <div class="app-emoji">🗂️</div>
+                <span>Flashcards</span>
+            </div>
+            <div id="admin-app-icon" class="app-icon" style="top:530px; left:330px; display:none;" onmousedown="dragWindow(this)" ondblclick="openApp('admin')">
+                <div class="app-emoji">🛡️</div>
+                <span>Admin</span>
+            </div>
+        </div>
+
+        <div id="window-notes" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">📝</span>
+                <span class="win-title">Notes</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('notes')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('notes')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('notes')">×</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <textarea id="note-textarea" oninput="saveNotes()" placeholder="Start typing..."></textarea>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-browser" class="window browser-window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">🌐</span>
+                <div class="browser-address-bar">
+                    <input type="text" id="browser-url" placeholder="Search..." onkeydown="if(event.key==='Enter') navigateBrowser()">
+                </div>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('browser')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('browser')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('browser')">×</button>
+                </div>
+            </div>
+            <div class="window-content"><iframe id="browser-frame" src="https://www.bing.com"></iframe></div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-filemgr" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">📁</span>
+                <span class="win-title">File Manager</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('filemgr')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('filemgr')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('filemgr')">×</button>
+                </div>
+            </div>
+            <div class="window-content filemgr-view">
+                <div class="filemgr-toolbar">
+                    <input id="fm-new-path" type="text" placeholder="New file path (example: notes/today.txt)">
+                    <button class="btn-save" onclick="createVirtualFile()">Create</button>
+                    <button class="btn-main" onclick="refreshFileManager()">Refresh</button>
+                </div>
+                <div class="filemgr-layout">
+                    <div class="filemgr-list-panel">
+                        <div id="fm-file-list"></div>
+                    </div>
+                    <div class="filemgr-editor-panel">
+                        <div id="fm-current-file" class="fm-current-file">No file selected</div>
+                        <textarea id="fm-editor" placeholder="Select a file to edit"></textarea>
+                        <div class="filemgr-actions">
+                            <button class="btn-main" onclick="saveVirtualFileContent()">Save</button>
+                            <button class="kill-btn" onclick="deleteCurrentVirtualFile()">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-terminal" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">⌨️</span>
+                <span class="win-title">Terminal</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('terminal')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('terminal')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('terminal')">×</button>
+                </div>
+            </div>
+            <div class="window-content terminal-view">
+                <div id="terminal-output" class="terminal-output"></div>
+                <div class="terminal-input-row">
+                    <span id="terminal-prompt" class="terminal-prompt">user@focusflow:/$</span>
+                    <input id="terminal-input" type="text" autocomplete="off" placeholder="Type a command and press Enter" onkeydown="if(event.key==='Enter') runTerminalCommand()">
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-settings" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-title">Settings</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('settings')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('settings')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('settings')">×</button>
+                </div>
+            </div>
+            <div class="window-content settings-view">
+                <div class="user-profile-header">
+                    <div id="settings-avatar" class="profile-img-small"></div>
+                    <div>
+                        <h3 id="settings-name-display" style="margin:0;">User</h3>
+                        <span id="google-status-pill" class="status-badge">Checking...</span>
+                    </div>
+                </div>
+                <div class="settings-group profile-actions-group">
+                    <input id="profile-photo-input" type="file" accept="image/*" style="display:none;" onchange="updateProfilePhoto(event)">
+                    <div class="profile-action-row">
+                        <button class="btn-save" onclick="triggerProfilePhotoPicker()">Change Profile Picture</button>
+                        <button class="btn-main" onclick="linkGoogleAccount()" id="link-google-btn">Link Google Account</button>
+                    </div>
+                    <div class="profile-action-row">
+                        <button class="kill-btn" onclick="removeProfilePhoto()">Remove Profile Picture</button>
+                        <button class="kill-btn" onclick="unlinkGoogleAccount()" id="unlink-google-btn" style="display:none;">Unlink Google</button>
+                    </div>
+                </div>
+                <div class="settings-group">
+                    <label>Wallpaper Presets</label>
+                    <div class="wallpaper-grid">
+                        <button class="wallpaper-preset" onclick="changeWallpaperGradient('linear-gradient(135deg, #667eea 0%, #764ba2 100%)')" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" title="Purple Gradient">1</button>
+                        <button class="wallpaper-preset" onclick="changeWallpaperGradient('linear-gradient(135deg, #f093fb 0%, #f5576c 100%)')" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" title="Pink Gradient">2</button>
+                        <button class="wallpaper-preset" onclick="changeWallpaperGradient('linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)')" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" title="Blue Gradient">3</button>
+                        <button class="wallpaper-preset" onclick="changeWallpaperGradient('linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)')" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" title="Green Gradient">4</button>
+                        <button class="wallpaper-preset" onclick="changeWallpaperGradient('linear-gradient(135deg, #fa709a 0%, #fee140 100%)')" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);" title="Sunset Gradient">5</button>
+                    </div>
+                </div>
+                <div class="settings-group">
+                    <label>Display Name</label>
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" id="set-display-name" style="margin:0;">
+                        <button class="btn-save" onclick="updateDisplayName()">Update</button>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <label>🔔 Notifications</label>
+                    <div class="notification-settings">
+                        <button class="btn-main" onclick="requestNotificationPermission()" id="notif-enable-btn" style="width:100%; margin-bottom:10px;">Enable Notifications</button>
+                        <div id="notif-status" class="notif-status-box">Click the button above to enable</div>
+                        
+                        <div class="notif-types-container">
+                            <div class="notif-type-item">
+                                <label>
+                                    <input type="checkbox" id="notif-class" checked onchange="saveNotificationSettings()">
+                                    <span class="notif-icon">📚</span>
+                                    <div class="notif-info">
+                                        <div class="notif-title">Class & Events</div>
+                                        <div class="notif-desc">10 minutes before</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="notif-type-item">
+                                <label>
+                                    <input type="checkbox" id="notif-exam" checked onchange="saveNotificationSettings()">
+                                    <span class="notif-icon">📝</span>
+                                    <div class="notif-info">
+                                        <div class="notif-title">Exams</div>
+                                        <div class="notif-desc">1 day & 1 hour before</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="notif-type-item">
+                                <label>
+                                    <input type="checkbox" id="notif-message" checked onchange="saveNotificationSettings()">
+                                    <span class="notif-icon">💬</span>
+                                    <div class="notif-info">
+                                        <div class="notif-title">Messages</div>
+                                        <div class="notif-desc">When friends message you</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="notif-type-item">
+                                <label>
+                                    <input type="checkbox" id="notif-todo" checked onchange="saveNotificationSettings()">
+                                    <span class="notif-icon">✅</span>
+                                    <div class="notif-info">
+                                        <div class="notif-title">Todo Deadlines</div>
+                                        <div class="notif-desc">On due date</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="notif-type-item">
+                                <label>
+                                    <input type="checkbox" id="notif-timer" checked onchange="saveNotificationSettings()">
+                                    <span class="notif-icon">⏱</span>
+                                    <div class="notif-info">
+                                        <div class="notif-title">Timer</div>
+                                        <div class="notif-desc">When timer completes</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="password-section" class="settings-group">
+                    <label>Account Security</label>
+                    <input type="password" id="new-password" placeholder="New Password">
+                    <button class="btn-main" style="width:100%; margin-top:5px;" onclick="updatePassword()">Change Password</button>
+                </div>
+                <div class="danger-zone">
+                    <button class="btn-logout" onclick="logout()">Shut Down Session</button>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-taskmgr" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">📊</span>
+                <span class="win-title">Task Manager</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn close" onclick="closeApp('taskmgr')">×</button>
+                </div>
+            </div>
+            <div class="window-content task-mgr-view">
+                <table id="task-table">
+                    <thead><tr><th>Process</th><th>Status</th><th>Action</th></tr></thead>
+                    <tbody id="task-list"></tbody>
+                </table>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-weather" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-title">Weather</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('weather')">-</button>
+                    <button class="ctrl-btn close" onclick="closeApp('weather')">×</button>
+                </div>
+            </div>
+            <div class="window-content weather-view">
+                <div class="weather-search">
+                    <input type="text" id="weather-city-input" placeholder="Enter city (e.g. London)" onkeydown="if(event.key==='Enter') fetchWeather()">
+                    <button onclick="fetchWeather()" style="width: auto; margin:0; padding: 5px 12px; cursor:pointer;">🔍</button>
+                </div>
+                <div id="weather-data" class="weather-info-card">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <img id="weather-icon" src="https://openweathermap.org/img/wn/01d@2x.png" style="width:80px;">
+                        <h1 id="weather-temp" style="font-size: 48px; margin: 0;">--°C</h1>
+                    </div>
+                    <h2 id="weather-location" style="margin: 10px 0 5px;">Search a City</h2>
+                    <p id="weather-desc" style="text-transform: capitalize; color: #666;">Pirate Weather Powered</p>
+                    <div style="display: flex; justify-content: space-around; border-top: 1px solid #ddd; padding-top: 15px; margin-top: 15px;">
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="font-size: 11px; color: #888;">Humidity</span>
+                            <strong id="weather-humidity">--%</strong>
+                        </div>
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="font-size: 11px; color: #888;">Wind</span>
+                            <strong id="weather-wind">-- km/h</strong>
+                        </div>
+                    </div>
+                    <div id="forecast-container" style="display: flex; justify-content: space-between; margin-top: 20px; padding-top: 15px; border-top: 1px dashed rgba(0,0,0,0.1);"></div>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-social" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-title">Social Hub</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn close" onclick="closeApp('social')">×</button>
+                </div>
+            </div>
+            <div class="window-content social-layout">
+                <div class="friends-panel">
+                    <h3>Friends</h3>
+                    <div style="display:flex; gap:6px; margin-bottom:8px;">
+                        <input id="friend-email" placeholder="Add friend by email">
+                        <button onclick="sendFriendRequest()">Send Request</button>
+                    </div>
+                    <div><strong>Incoming Requests</strong><div id="incoming-requests" style="margin-top:6px;"></div></div>
+                    <div style="margin-top:8px;"><strong>Your Friends</strong><div id="friends-list" style="margin-top:6px;"></div></div>
+                    <div style="margin-top:8px;"><strong>Blocked Users</strong><div id="blocked-list" style="margin-top:6px;"></div></div>
+                </div>
+                <div class="chat-panel">
+                    <div id="chat-header">Select a friend</div>
+                    <div id="chat-messages"></div>
+                    <div class="chat-input">
+                        <input id="chat-input" placeholder="Message">
+                        <input type="file" id="file-upload">
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-focus" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">⏱️</span>
+                <span class="win-title">Focus Timer</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('focus')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('focus')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('focus')">×</button>
+                </div>
+            </div>
+            <div class="window-content focus-view">
+                <div class="timer-mode-tabs">
+                    <button class="timer-tab active" onclick="setTimerMode('pomodoro')" id="tab-pomodoro">🍅 Pomodoro</button>
+                    <button class="timer-tab" onclick="setTimerMode('countdown')" id="tab-countdown">⏱ Timer</button>
+                    <button class="timer-tab" onclick="setTimerMode('stopwatch')" id="tab-stopwatch">⏲ Stopwatch</button>
+                </div>
+                
+                <div class="timer-display-area">
+                    <svg class="timer-circle" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="85" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                        <circle id="timer-progress-circle" cx="100" cy="100" r="85" fill="none" stroke="#4CAF50" stroke-width="8" 
+                                stroke-dasharray="534.07" stroke-dashoffset="534.07" transform="rotate(-90 100 100)" stroke-linecap="round"/>
+                    </svg>
+                    <div class="timer-overlay">
+                        <div id="timer-label" class="timer-label">Focus Time</div>
+                        <div id="focus-timer-display" class="focus-time">25:00</div>
+                        <div id="timer-cycle-info" class="timer-cycle-info"></div>
+                    </div>
+                </div>
+
+                <div id="timer-presets" class="timer-presets">
+                    <button onclick="setQuickTimer(5)">5m</button>
+                    <button onclick="setQuickTimer(10)">10m</button>
+                    <button onclick="setQuickTimer(15)">15m</button>
+                    <button onclick="setQuickTimer(25)" class="preset-highlight">25m</button>
+                    <button onclick="setQuickTimer(30)">30m</button>
+                    <button onclick="setQuickTimer(45)">45m</button>
+                    <button onclick="setQuickTimer(60)">60m</button>
+                </div>
+
+                <div class="timer-custom-input">
+                    <input id="timer-session-label" type="text" placeholder="Session name (optional)" maxlength="30">
+                    <div style="display:flex; gap:8px; align-items:center;">
+                        <input id="focus-minutes-input" type="number" min="1" max="999" value="25" placeholder="Min">
+                        <button class="btn-save" onclick="setCountdownMinutes()">Set</button>
+                    </div>
+                </div>
+                
+                <div class="focus-controls">
+                    <button class="btn-main timer-btn-start" onclick="startTimer()" id="timer-start-btn">▶ Start</button>
+                    <button class="btn-save timer-btn-pause" onclick="pauseTimer()" id="timer-pause-btn" style="display:none;">⏸ Pause</button>
+                    <button class="btn-logout timer-btn-reset" onclick="resetTimer()">↻ Reset</button>
+                    <button class="btn-save timer-btn-lap" onclick="recordLap()" id="timer-lap-btn" style="display:none;">⏱ Lap</button>
+                </div>
+
+                <div id="timer-laps-container" style="display:none;">
+                    <div style="font-weight:600; margin-bottom:8px; font-size:13px;">Lap Times</div>
+                    <div id="timer-laps-list" class="timer-laps-list"></div>
+                </div>
+
+                <div class="timer-history-container">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <span style="font-weight:600; font-size:13px;">Session History</span>
+                        <button onclick="clearTimerHistory()" style="font-size:11px; padding:4px 8px; background:#f44336; color:white; border:none; border-radius:4px; cursor:pointer;">Clear</button>
+                    </div>
+                    <div id="timer-history-list" class="timer-history-list"></div>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-calendar" class="window calendar-window-enhanced" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">📅</span>
+                <span class="win-title">Calendar</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('calendar')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('calendar')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('calendar')">×</button>
+                </div>
+            </div>
+            <div class="window-content calendar-view-enhanced">
+                <div class="calendar-toolbar">
+                    <button class="btn-save" onclick="goToToday()">Today</button>
+                    <button class="btn-save" onclick="prevMonth()">◀</button>
+                    <h3 id="calendar-title" style="margin:0;">Month YYYY</h3>
+                    <button class="btn-save" onclick="nextMonth()">▶</button>
+                    <div style="display:flex;gap:5px;">
+                        <button class="view-btn" id="month-view-btn" onclick="setCalendarView('month')">Month</button>
+                        <button class="view-btn" id="week-view-btn" onclick="setCalendarView('week')">Week</button>
+                        <button class="view-btn" id="day-view-btn" onclick="setCalendarView('day')">Day</button>
+                    </div>
+                    <button class="btn-main" onclick="toggleEventForm()" style="padding:6px 12px;">+ New Event</button>
+                </div>
+                
+                <div id="event-form-modal" class="event-modal" style="display:none;">
+                    <div class="event-modal-content">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                            <h3 style="margin:0;" id="event-form-title">New Event</h3>
+                            <button onclick="closeEventForm()" style="border:none;background:none;font-size:20px;cursor:pointer;">×</button>
+                        </div>
+                        <input id="event-title" type="text" placeholder="Event Title" style="width:100%;margin-bottom:8px;">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+                            <select id="event-type" style="margin:0;">
+                                <option value="Event">Event</option>
+                                <option value="Class">Class</option>
+                                <option value="Study">Study Session</option>
+                                <option value="Assignment">Assignment</option>
+                                <option value="Exam">Exam</option>
+                                <option value="Meeting">Meeting</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Work">Work</option>
+                            </select>
+                            <select id="event-color" style="margin:0;">
+                                <option value="#4facfe">Blue</option>
+                                <option value="#43e97b">Green</option>
+                                <option value="#fa709a">Pink</option>
+                                <option value="#f093fb">Purple</option>
+                                <option value="#fee140">Yellow</option>
+                                <option value="#ff6b6b">Red</option>
+                                <option value="#ffa94d">Orange</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom:8px;">
+                            <label style="font-size:11px;color:#666;display:block;margin-bottom:4px;">Date</label>
+                            <input id="event-date" type="date" style="margin:0;width:100%;">
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+                            <div>
+                                <label style="font-size:11px;color:#666;display:block;margin-bottom:4px;">Start Time</label>
+                                <div style="display:flex;gap:4px;">
+                                    <select id="event-start-hour" style="margin:0;flex:1;">
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09" selected>09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                    <select id="event-start-minute" style="margin:0;flex:1;">
+                                        <option value="00" selected>00</option>
+                                        <option value="05">05</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                        <option value="45">45</option>
+                                        <option value="50">50</option>
+                                        <option value="55">55</option>
+                                    </select>
+                                    <select id="event-start-ampm" style="margin:0;flex:0.8;">
+                                        <option value="AM" selected>AM</option>
+                                        <option value="PM">PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label style="font-size:11px;color:#666;display:block;margin-bottom:4px;">End Time</label>
+                                <div style="display:flex;gap:4px;">
+                                    <select id="event-end-hour" style="margin:0;flex:1;">
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10" selected>10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                    <select id="event-end-minute" style="margin:0;flex:1;">
+                                        <option value="00" selected>00</option>
+                                        <option value="05">05</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                        <option value="45">45</option>
+                                        <option value="50">50</option>
+                                        <option value="55">55</option>
+                                    </select>
+                                    <select id="event-end-ampm" style="margin:0;flex:0.8;">
+                                        <option value="AM" selected>AM</option>
+                                        <option value="PM">PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <select id="event-recurring" style="width:100%;margin-bottom:8px;">
+                            <option value="none">Does not repeat</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Biweekly">Bi-weekly</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                        <input id="event-location" type="text" placeholder="Location (optional)" style="width:100%;margin-bottom:8px;">
+                        <textarea id="event-description" placeholder="Description (optional)" style="width:100%;height:60px;margin-bottom:12px;resize:vertical;"></textarea>
+                        <div style="display:flex;gap:8px;">
+                            <button class="btn-main" onclick="saveEvent()" style="flex:1;">Save Event</button>
+                            <button class="btn-save" onclick="closeEventForm()" style="flex:1;">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="calendar-main-view">
+                    <div id="month-view">
+                        <div class="calendar-weekdays">
+                            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                        </div>
+                        <div id="calendar-grid" class="calendar-grid-enhanced"></div>
+                    </div>
+                    <div id="week-view" style="display:none;">
+                        <div id="week-view-content"></div>
+                    </div>
+                    <div id="day-view" style="display:none;">
+                        <div id="day-view-content"></div>
+                    </div>
+                </div>
+                
+                <div class="calendar-sidebar">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                        <h4 style="margin:0;">Upcoming Events</h4>
+                        <input id="event-search" type="text" placeholder="Search..." style="width:150px;padding:4px 8px;margin:0;" oninput="filterEvents()">
+                    </div>
+                    <div style="display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap;">
+                        <button class="filter-btn active" data-filter="all" onclick="filterEventsByType('all')">All</button>
+                        <button class="filter-btn" data-filter="Class" onclick="filterEventsByType('Class')">Classes</button>
+                        <button class="filter-btn" data-filter="Assignment" onclick="filterEventsByType('Assignment')">Assignments</button>
+                        <button class="filter-btn" data-filter="Exam" onclick="filterEventsByType('Exam')">Exams</button>
+                    </div>
+                    <div id="calendar-schedule-list" class="calendar-schedule-list-enhanced"></div>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-todolist" class="window todolist-window-enhanced" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">✓</span>
+                <span class="win-title">To-Do List</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('todolist')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('todolist')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('todolist')">×</button>
+                </div>
+            </div>
+            <div class="window-content todolist-view-enhanced">
+                <div class="todo-header">
+                    <div class="todo-stats-bar">
+                        <div class="stat-mini">
+                            <span>Total</span>
+                            <strong id="todo-stat-total">0</strong>
+                        </div>
+                        <div class="stat-mini">
+                            <span>Active</span>
+                            <strong id="todo-stat-active">0</strong>
+                        </div>
+                        <div class="stat-mini">
+                            <span>Completed</span>
+                            <strong id="todo-stat-completed">0</strong>
+                        </div>
+                        <div class="stat-mini">
+                            <span>Overdue</span>
+                            <strong id="todo-stat-overdue" style="color:#ff6b6b;">0</strong>
+                        </div>
+                    </div>
+                    <button class="btn-main" onclick="toggleTodoForm()" style="padding:8px 16px;">+ New Task</button>
+                </div>
+                
+                <div id="todo-form-modal" class="todo-modal" style="display:none;">
+                    <div class="todo-modal-content">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                            <h3 style="margin:0;" id="todo-form-title">New Task</h3>
+                            <button onclick="closeTodoForm()" style="border:none;background:none;font-size:20px;cursor:pointer;">×</button>
+                        </div>
+                        <input id="todo-title" type="text" placeholder="Task Title *" style="width:100%;font-size:16px;font-weight:600;">
+                        <textarea id="todo-description" placeholder="Description (optional)" style="width:100%;height:60px;resize:vertical;"></textarea>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                            <div>
+                                <label style="font-size:11px;color:#666;display:block;margin-bottom:4px;">Subject/Category</label>
+                                <input id="todo-subject" type="text" placeholder="e.g. Math, Work" style="width:100%;margin:0;">
+                            </div>
+                            <div>
+                                <label style="font-size:11px;color:#666;display:block;margin-bottom:4px;">Due Date</label>
+                                <input id="todo-due-date" type="date" style="width:100%;margin:0;">
+                            </div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                            <div>
+                                <label style="font-size:11px;color:#666;display:block;margin-bottom:4px;">Priority</label>
+                                <select id="todo-priority" style="width:100%;margin:0;">
+                                    <option value="Low">🟢 Low</option>
+                                    <option value="Medium" selected>🟡 Medium</option>
+                                    <option value="High">🔴 High</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-size:11px;color:#666;display:block;margin-bottom:4px;">Tags</label>
+                                <input id="todo-tags" type="text" placeholder="homework, urgent" style="width:100%;margin:0;">
+                            </div>
+                        </div>
+                        <div>
+                            <label style="font-size:11px;color:#666;display:block;margin-bottom:4px;">Subtasks (one per line)</label>
+                            <textarea id="todo-subtasks" placeholder="- Subtask 1&#10;- Subtask 2" style="width:100%;height:60px;resize:vertical;"></textarea>
+                        </div>
+                        <div style="display:flex;gap:8px;margin-top:12px;">
+                            <button class="btn-main" onclick="saveTodo()" style="flex:1;">Save Task</button>
+                            <button class="btn-save" onclick="closeTodoForm()" style="flex:1;">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="todo-controls">
+                    <input id="todo-search" type="text" placeholder="🔍 Search tasks..." style="flex:1;margin:0;padding:8px 12px;" oninput="filterTodos()">
+                    <select id="todo-filter-status" style="margin:0;padding:8px;" onchange="filterTodos()">
+                        <option value="all">All Tasks</option>
+                        <option value="active">Active Only</option>
+                        <option value="completed">Completed Only</option>
+                        <option value="overdue">Overdue Only</option>
+                    </select>
+                    <select id="todo-sort" style="margin:0;padding:8px;" onchange="sortTodos()">
+                        <option value="dueDate">Sort by Due Date</option>
+                        <option value="priority">Sort by Priority</option>
+                        <option value="created">Sort by Created</option>
+                        <option value="title">Sort by Title</option>
+                    </select>
+                </div>
+                
+                <div class="todo-filter-tags">
+                    <span style="font-size:11px;color:#666;margin-right:8px;">Filter by Priority:</span>
+                    <button class="tag-filter active" data-priority="all" onclick="filterByPriority('all')">All</button>
+                    <button class="tag-filter" data-priority="High" onclick="filterByPriority('High')">🔴 High</button>
+                    <button class="tag-filter" data-priority="Medium" onclick="filterByPriority('Medium')">🟡 Medium</button>
+                    <button class="tag-filter" data-priority="Low" onclick="filterByPriority('Low')">🟢 Low</button>
+                </div>
+                
+                <div class="todo-progress-bar">
+                    <div class="progress-fill" id="todo-progress-fill" style="width:0%"></div>
+                    <span class="progress-text" id="todo-progress-text">0% Complete</span>
+                </div>
+                
+                <div id="todo-list" class="todo-list-enhanced"></div>
+                
+                <div class="todo-footer">
+                    <button class="btn-save" onclick="clearCompletedTodos()">Clear Completed</button>
+                    <button class="btn-save" onclick="exportTodos()">Export Tasks</button>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-exams" class="window exam-window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">🧪</span>
+                <span class="win-title">Exam/Test Planner</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('exams')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('exams')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('exams')">×</button>
+                </div>
+            </div>
+            <div class="window-content exam-view">
+                <div class="exam-topbar">
+                    <div>
+                        <div style="font-size:11px; color:#666; text-transform:uppercase;">Next Exam Countdown</div>
+                        <div id="exam-next-countdown" class="exam-next-countdown">No upcoming exams</div>
+                    </div>
+                    <button class="btn-main" onclick="addExamItem()" style="padding:8px 14px;">Add Exam</button>
+                </div>
+
+                <div class="exam-form-grid">
+                    <input id="exam-title" type="text" placeholder="Exam/Test Title">
+                    <select id="exam-type">
+                        <option value="Exam">Exam</option>
+                        <option value="Test">Test</option>
+                        <option value="Quiz">Quiz</option>
+                        <option value="Assessment">Assessment</option>
+                    </select>
+                    <input id="exam-subject" type="text" placeholder="Subject">
+                    <input id="exam-date" type="date">
+                    <input id="exam-time" type="time">
+                    <input id="exam-location" type="text" placeholder="Location (optional)">
+                </div>
+
+                <div id="exam-list" class="exam-list"></div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-flashcards" class="window flashcards-window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">🗂️</span>
+                <span class="win-title">Flashcards</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('flashcards')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('flashcards')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('flashcards')">×</button>
+                </div>
+            </div>
+            <div class="window-content flashcards-view">
+                <div class="flash-deck-header">
+                    <input id="flash-deck-title" type="text" value="My Flashcard Set" oninput="updateFlashDeckTitle()">
+                    <div class="flash-deck-meta" id="flash-deck-meta">0 cards</div>
+                    <select id="flash-set-select" onchange="selectFlashSet(this.value)"></select>
+                    <button class="btn-save" onclick="createFlashSet()">+ Set</button>
+                    <button class="kill-btn" onclick="deleteFlashSet()">Delete Set</button>
+                    <button class="btn-save" onclick="triggerFlashImport('json')">Import JSON</button>
+                    <button class="btn-save" onclick="triggerFlashImport('csv')">Import CSV</button>
+                    <button class="btn-save" onclick="exportCurrentFlashSetJSON()">Export JSON</button>
+                    <button class="btn-save" onclick="exportCurrentFlashSetCSV()">Export CSV</button>
+                    <input id="flash-import-file" type="file" style="display:none;" onchange="handleFlashImportFile(event)">
+                </div>
+
+                <div class="flash-mode-tabs">
+                    <button id="flash-mode-study" class="btn-save active" onclick="setFlashMode('study')">Study</button>
+                    <button id="flash-mode-learn" class="btn-save" onclick="setFlashMode('learn')">Learn</button>
+                    <button id="flash-mode-write" class="btn-save" onclick="setFlashMode('write')">Write</button>
+                    <button id="flash-mode-match" class="btn-save" onclick="setFlashMode('match')">Match</button>
+                </div>
+
+                <div class="flashcards-layout">
+                    <div class="flashcards-left">
+                        <h4 style="margin:0 0 6px;">Create Card</h4>
+                        <input id="flash-subject" type="text" placeholder="Subject">
+                        <textarea id="flash-front" placeholder="Term / Question" style="height:74px; resize:vertical;"></textarea>
+                        <textarea id="flash-back" placeholder="Definition / Answer" style="height:84px; resize:vertical;"></textarea>
+                        <button class="btn-main" onclick="addFlashcard()" style="width:100%;">Add to Deck</button>
+
+                        <div class="flash-tools-row">
+                            <input id="flash-search" type="text" placeholder="Search cards..." oninput="setFlashSearch(this.value)">
+                            <button class="btn-save" onclick="toggleFlashFavoritesOnly()" id="flash-fav-filter-btn">Starred</button>
+                        </div>
+
+                        <h4 style="margin:8px 0 6px;">Terms</h4>
+                        <div id="flashcard-list" class="flashcard-list"></div>
+                    </div>
+
+                    <div class="flashcards-right">
+                        <div class="flash-study-top">
+                            <h4 style="margin:0;">Study</h4>
+                            <div style="display:flex; gap:6px;">
+                                <button class="btn-save" onclick="toggleFlashShuffle()" id="flash-shuffle-btn">Shuffle: Off</button>
+                                <button class="btn-save" onclick="nextFlashcard()">Next</button>
+                            </div>
+                        </div>
+
+                        <div class="flash-progress-wrap">
+                            <div class="flash-progress-track"><div id="flash-progress-fill" class="flash-progress-fill"></div></div>
+                            <div id="flash-progress-label" class="flash-progress-label">0 reviewed this session</div>
+                            <div id="flash-set-stats" class="flash-set-stats"></div>
+                        </div>
+
+                        <div id="flashcard-study" class="flashcard-study">
+                            <div class="flashcard-empty">No flashcards yet. Add one to start studying.</div>
+                        </div>
+
+                        <div class="flash-study-actions">
+                            <button class="btn-save" onclick="flipFlashcard()">Flip</button>
+                            <button class="btn-save" onclick="markFlashcardHard()">Still Learning</button>
+                            <button class="btn-main" onclick="markFlashcardReviewed()">Got It</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-music" class="window music-window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">🎵</span>
+                <span class="win-title">Music Player</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('music')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('music')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('music')">×</button>
+                </div>
+            </div>
+            <div class="window-content music-view">
+                <audio id="music-audio"></audio>
+                <div class="music-now-playing">
+                    <div class="music-track-title" id="music-track-title">No track selected</div>
+                    <div class="music-track-meta" id="music-track-meta">Pick a song from the playlist</div>
+                </div>
+                <div class="music-controls">
+                    <button class="btn-save" onclick="prevTrack()">⏮</button>
+                    <button class="btn-main" onclick="togglePlayPause()" id="music-play-btn">Play</button>
+                    <button class="btn-save" onclick="nextTrack()">⏭</button>
+                    <label style="font-size:12px; color:#666;">Vol</label>
+                    <input id="music-volume" type="range" min="0" max="1" step="0.01" value="0.6" oninput="setMusicVolume(this.value)">
+                </div>
+                <div id="music-playlist" class="music-playlist"></div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-stocks" class="window stocks-window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">💹</span>
+                <span class="win-title">Stock Market Simulator</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('stocks')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('stocks')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('stocks')">×</button>
+                </div>
+            </div>
+            <div class="window-content stocks-view">
+                <div class="stocks-topbar">
+                    <div><span class="stocks-label">Coins</span> <strong id="stock-coins">0</strong></div>
+                    <div><span class="stocks-label">Portfolio Value</span> <strong id="stock-portfolio-value">0</strong></div>
+                    <div><span class="stocks-label">Net Worth</span> <strong id="stock-net-worth">0</strong></div>
+                </div>
+                <div class="stocks-grid">
+                    <div class="stocks-market-panel">
+                        <h4 style="margin:0 0 8px;">Market</h4>
+                        <table id="stocks-table" class="stocks-table">
+                            <thead><tr><th>Symbol</th><th>Price</th><th>Owned</th><th>Qty</th><th>Actions</th></tr></thead>
+                            <tbody id="stocks-body"></tbody>
+                        </table>
+                    </div>
+                    <div class="stocks-side-panel">
+                        <h4 style="margin:0 0 8px;">Price Chart</h4>
+                        <div id="stock-chart-title" style="font-size:12px;color:#667085;margin-bottom:6px;">TECHX</div>
+                        <div class="stock-chart-wrap">
+                            <svg id="stock-chart-svg" viewBox="0 0 320 140" preserveAspectRatio="none"></svg>
+                        </div>
+                        <div id="stock-chart-stats" class="stock-chart-stats"></div>
+                        <h4 style="margin:0 0 8px;">Portfolio</h4>
+                        <div id="stocks-portfolio" class="stocks-portfolio"></div>
+                        <h4 style="margin:10px 0 8px;">Recent Trades</h4>
+                        <div id="stocks-history" class="stocks-history"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-progress" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">📈</span>
+                <span class="win-title">Progress</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('progress')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('progress')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('progress')">×</button>
+                </div>
+            </div>
+            <div class="window-content progress-view">
+                <div class="progress-stats">
+                    <div class="stat-card"><span>Level</span><strong id="prog-level">1</strong></div>
+                    <div class="stat-card"><span>XP</span><strong id="prog-xp">0</strong></div>
+                    <div class="stat-card"><span>Points</span><strong id="prog-points">0</strong></div>
+                    <div class="stat-card"><span>Streak</span><strong id="prog-streak">0 days</strong></div>
+                </div>
+                <div class="progress-actions">
+                    <button class="btn-main" onclick="refreshProgressView()">Refresh</button>
+                </div>
+                <div class="progress-breakdown">
+                    <div>Tasks: <strong id="prog-tasks">0</strong></div>
+                    <div>Exams: <strong id="prog-exams">0</strong></div>
+                    <div>Flashcards: <strong id="prog-flashcards">0</strong></div>
+                    <div>Focus Time: <strong id="prog-focus">0m</strong></div>
+                </div>
+                <div>
+                    <div style="font-size:12px; font-weight:600; margin-bottom:4px;">Task Master progress</div>
+                    <div class="viz-track"><div id="viz-tasks" class="viz-fill"></div></div>
+                    <div style="font-size:12px; font-weight:600; margin:8px 0 4px;">Focus Pro progress</div>
+                    <div class="viz-track"><div id="viz-focus" class="viz-fill"></div></div>
+                    <div style="font-size:12px; font-weight:600; margin:8px 0 4px;">Level 10 progress</div>
+                    <div class="viz-track"><div id="viz-level" class="viz-fill"></div></div>
+                </div>
+                <div>
+                    <h4 style="margin:10px 0;">Badges & Achievements</h4>
+                    <div id="prog-badges" class="badges-list"></div>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-leaderboard" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">🏆</span>
+                <span class="win-title">Leaderboard</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('leaderboard')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('leaderboard')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('leaderboard')">×</button>
+                </div>
+            </div>
+            <div class="window-content leaderboard-view">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <h3 style="margin:0;">Top Scholars</h3>
+                    <button class="btn-save" onclick="loadLeaderboard()">Refresh</button>
+                </div>
+                <table id="leaderboard-table">
+                    <thead><tr><th>#</th><th>User</th><th>Level</th><th>XP</th><th>Badges</th></tr></thead>
+                    <tbody id="leaderboard-body"></tbody>
+                </table>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="window-admin" class="window" onmousedown="bringToFront(this)">
+            <div class="window-header" onmousedown="dragWindow(this.parentElement)">
+                <span class="win-icon">🛡️</span>
+                <span class="win-title">Admin Panel</span>
+                <div class="win-controls">
+                    <button class="ctrl-btn min" onclick="minimizeApp('admin')">-</button>
+                    <button class="ctrl-btn max" onclick="toggleMaximize('admin')">□</button>
+                    <button class="ctrl-btn close" onclick="closeApp('admin')">×</button>
+                </div>
+            </div>
+            <div class="window-content admin-view">
+                <div class="admin-left">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <h4 style="margin:0;">Users</h4>
+                        <button class="btn-save" onclick="loadAdminPanel()">Refresh</button>
+                    </div>
+                    <table class="admin-users-table">
+                        <thead><tr><th>User</th><th>Level</th><th>XP</th><th></th></tr></thead>
+                        <tbody id="admin-users-body"></tbody>
+                    </table>
+                </div>
+                <div class="admin-right">
+                    <h4 style="margin:0 0 8px;">Edit User Progress</h4>
+                    <div style="font-size:12px; color:#666; margin-bottom:6px;">Admin Accounts</div>
+                    <div style="display:flex; gap:8px; margin-bottom:8px;">
+                        <input id="admin-new-email" type="email" placeholder="Add admin email">
+                        <button class="btn-save" onclick="addAdminEmail()">Add Admin</button>
+                    </div>
+                    <div id="admin-admins-list" style="border:1px solid #e6e9f0; border-radius:8px; padding:8px; margin-bottom:10px; max-height:130px; overflow:auto;"></div>
+                    <div id="admin-selected-user" style="font-size:12px; color:#666; margin-bottom:8px;">No user selected</div>
+                    <div class="admin-form-grid">
+                        <label>XP</label><input id="admin-xp" type="number" min="0">
+                        <label>Level</label><input id="admin-level" type="number" min="1">
+                        <label>Points</label><input id="admin-points" type="number" min="0">
+                        <label>Tasks</label><input id="admin-tasks" type="number" min="0">
+                        <label>Exams</label><input id="admin-exams" type="number" min="0">
+                        <label>Focus (sec)</label><input id="admin-focus" type="number" min="0">
+                    </div>
+                    <label style="font-size:12px; color:#666;">Badges (comma separated)</label>
+                    <textarea id="admin-badges" rows="4" placeholder="First Steps, Task Master"></textarea>
+                    <div style="display:flex; gap:8px; margin-top:8px;">
+                        <button class="btn-main" onclick="adminApplyUpdates()">Apply Updates</button>
+                        <button class="kill-btn" style="flex:1;" onclick="adminResetSelectedUserProgress()">Reset Selected</button>
+                    </div>
+                    <button class="kill-btn" style="width:100%; margin-top:8px;" onclick="adminResetAllUsersProgress()">Reset All Users</button>
+                </div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div id="notification-panel" class="notification-panel" style="display:none;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid #ddd;">
+                <strong style="font-size:14px;">Notifications</strong>
+                <button onclick="clearAllNotifications()" style="font-size:11px; padding:4px 8px; background:#f44336; color:white; border:none; border-radius:4px; cursor:pointer;">Clear All</button>
+            </div>
+            <div id="notification-list" class="notification-list"></div>
+        </div>
+
+        <div id="taskbar">
+            <div class="taskbar-left">
+                <span class="logo">FocusFlow</span>
+                <div class="taskbar-divider"></div>
+                <div id="active-apps-bar"></div>
+            </div>
+            <div class="taskbar-right">
+                <span id="user-display-name">Guest</span>
+                <span id="taskbar-points">⭐ 0</span>
+                <div class="taskbar-divider"></div>
+                <div id="notification-icon" class="notification-icon" onclick="toggleNotificationPanel()" style="position:relative; cursor:pointer; display:none;">
+                    <span style="font-size:16px;">🔔</span>
+                    <span id="notification-badge" class="notification-badge" style="display:none;">0</span>
+                </div>
+                <div class="taskbar-divider" id="notif-divider" style="display:none;"></div>
+                <span id="clock">00:00</span>
+                <button class="shutdown-btn" onclick="logout()">⏻</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+    
+    <!-- JavaScript Modules -->
+    <!-- Core & Infrastructure -->
+    <script src="js/core.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/window-manager.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/progress.js"></script>
+    
+    <!-- Apps -->
+    <script src="js/leaderboard.js"></script>
+    <script src="js/social.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/exams.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/file-manager.js"></script>
+    <script src="js/terminal.js"></script>
+    <script src="js/flashcards.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/stocks.js"></script>
+</body>
+</html>
